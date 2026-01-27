@@ -1,0 +1,27 @@
+const express = require('express');
+const app = express();
+
+app.use(
+    express.urlencoded({
+        extended: true,
+    })
+);
+
+app.use(express.json());
+
+//Rotas - Endpoints
+
+app.post('/createproduct', (req,res) => {
+    const name = req.body.name;
+    const price = req.body.price;
+
+    console.log(name);
+    console.log(price);
+
+    res.json({message: `O produto ${name} foi criado com sucesso! E seu valor é ${price}`})
+})
+app.get('/', (req,res) =>{
+    res.json({message: 'Primeira rota criada com sucesso!'});
+});
+
+app.listen(3000);
